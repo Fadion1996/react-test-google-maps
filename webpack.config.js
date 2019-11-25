@@ -14,16 +14,27 @@ module.exports = {
                 exclude: /node_modules/,
                 use: {
                     loader: "babel-loader"
-                },
-            },
-            {
-                test: /\.css$/,
-                use: ["style-loader", "css-loader"]
+                }
             },
             {
                 test: /\.less$/,
-                loader: 'less-loader', // compiles Less to CSS
-            },
+                use: [
+                    "style-loader",
+                    {
+                        loader: "css-loader",
+                        options: {
+                            sourceMap: true,
+                            modules: {
+                                localIdentName:
+                                    "[name]__[local]___[hash:base64:5]"
+                            }
+                        }
+                    },
+                    {
+                        loader: "less-loader"
+                    }
+                ]
+            }
         ]
     },
     plugins: [
