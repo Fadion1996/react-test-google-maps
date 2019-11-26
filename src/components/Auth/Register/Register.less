@@ -1,12 +1,14 @@
-@login-color: #5b83ad;
-@login-button-bg: #aaa1c8;
-@login-button-border: #192a51;
-@login-button-color: #fff;
+@register-color: #5b83ad;
+@register-bg: #192a51;
+@register-button-bg: #aaa1c8;
+@register-button-border: #192a51;
+@register-button-color: #000;
 
 .register {
     width: 100%;
     height: 100%;
-    border-radius: 6px;
+    border-radius: 0 0 6px 6px;
+    background: @register-bg;
 
     .title {
         font-size: 24px;
@@ -21,7 +23,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        margin: 1rem 0;
+        justify-content: center;
     }
 
     .input {
@@ -46,9 +48,9 @@
         font-size: 16px;
         height: 40px;
         margin: 10px 0;
-        background: @login-button-bg;
-        color: @login-button-color;
-        border: 1px solid @login-button-border;
+        background: @register-button-bg;
+        color: @register-button-color;
+        border: 1px solid @register-button-border;
         border-radius: 6px;
     }
 }

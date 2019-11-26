@@ -1,17 +1,34 @@
 import React from "react";
+import { withRouter } from "react-router";
 import css from "./Login.less";
 
-const Login = ({ login, setLogin, password, setPassword, errorText }) => {
-    // const handleSubmit = () => {
-    //     localStorage.setItem('login', login);
-    //     localStorage.setItem('password', password);
-    //     console.log("Login with new ", login, "password: ", password);
-    // };
+const Login = ({
+    history,
+    login,
+    setLogin,
+    password,
+    setPassword,
+    errorText,
+    setErrorText
+}) => {
+    const handleSubmit = e => {
+        e.preventDefault();
+        const user = JSON.parse(localStorage.getItem("user"));
+        if (user) {
+            if (user.login === login && user.password === password) {
+                console.log("Welcome ", login, "password: ", password);
+                history.push("/main");
+            } else {
+                setErrorText("Login or password are incorect! Try again.");
+            }
+        } else {
+            setErrorText("Login or password are incorect! Try again.");
+        }
+    };
 
     return (
         <div className={css.login}>
-            <h1 className={css.title}>Login</h1>
-            <form className={css.form}>
+            <form className={css.form} onSubmit={handleSubmit}>
                 <input
                     className={css.input}
                     placeholder="Login"
@@ -28,9 +45,13 @@ const Login = ({ login, setLogin, password, setPassword, errorText }) => {
                     value={password}
                     onChange={e => setPassword(e.target.value)}
                 />
-
-                <div className={css.errorText} value={errorText} />
-                <input className={css.submit} type="submit" value="Submit" />
+                <div className={css.errorText}>{errorText}</div>
+                <input
+                    className={css.submit}
+                    onSubmit={handleSubmit}
+                    type="submit"
+                    value="Submit"
+                />
             </form>
 
             <div className={css.errorText} />
@@ -38,4 +59,4 @@ const Login = ({ login, setLogin, password, setPassword, errorText }) => {
     );
 };
 
-export default Login;
+export default withRouter(Login);

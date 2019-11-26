@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import { withRouter } from "react-router";
 import css from "./Register.less";
 
 const Register = ({
@@ -7,7 +8,8 @@ const Register = ({
     login,
     setLogin,
     errorText,
-    setErrorText
+    setErrorText,
+    history
 }) => {
     //validation
     const [repeatPassword, setRepeatPassword] = useState("");
@@ -27,13 +29,12 @@ const Register = ({
                     date: Date.now()
                 })
             );
-
-            console.log(user.login === login);
+            history.push("/main");
         } else {
             setErrorText("Password don't match. Please try again!");
         }
 
-        if (user.login === login) {
+        if (user && user.login === login) {
             setErrorText("This login already exists. Please login.");
         }
 
@@ -46,13 +47,12 @@ const Register = ({
 
     return (
         <div className={css.register}>
-            <h1 className={css.title}>Register</h1>
             <form className={css.form} onSubmit={handleSubmit}>
                 <input
                     className={css.input}
-                    placeholder="login"
+                    placeholder="Login"
                     type="text"
-                    name="ogin"
+                    name="login"
                     value={login}
                     onChange={e => setLogin(e.target.value)}
                 />
@@ -79,4 +79,4 @@ const Register = ({
     );
 };
 
-export default Register;
+export default withRouter(Register);
