@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 import Login from "./Login/Login";
 import Register from "./Register/Register";
 
 import css from "./Auth.less";
 
 const AuthPage = () => {
-    const [isLogged, setIsLogged] = useState(false);
+
     const [login, setLogin] = useState("");
     const [password, setPassword] = useState("");
     const [errorText, setErrorText] = useState("");
@@ -34,16 +34,14 @@ const AuthPage = () => {
                 </div>
             </div>
             {!tab ? (
-                !isLogged && (
-                    <Login
-                        login={login}
-                        setLogin={setLogin}
-                        password={password}
-                        setPassword={setPassword}
-                        errorText={errorText}
-                        setErrorText={setErrorText}
-                    />
-                )
+                <Login
+                    login={login}
+                    setLogin={setLogin}
+                    password={password}
+                    setPassword={setPassword}
+                    errorText={errorText}
+                    setErrorText={setErrorText}
+                />
             ) : (
                 <Register
                     login={login}
