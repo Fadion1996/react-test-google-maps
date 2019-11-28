@@ -1,0 +1,18 @@
+@lsb-bg-hover-color: #5b83ad;
+@lsb-bg-color: #192a51;
+
+.leftSideBar {
+  height: 100%;
+  width: 260px;
+  z-index: 1;
+  background: @lsb-bg-color;
+
+  .item {
+    padding: 10px;
+    cursor: pointer;
+
+    &:hover {
+      background: @lsb-bg-hover-color;
+    }
+  }
+}

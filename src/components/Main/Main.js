@@ -3,6 +3,7 @@ import Header from "./Header/Header";
 import {apiKey} from '../../config/config-vars'
 import {Map, GoogleApiWrapper} from 'google-maps-react';
 import css from "./Main.less";
+import LeftSideBar from "./LeftSideBar/LeftSideBar";
 
 const MainPage = ({google}) => {
     const [user, setUser] = useState({});
@@ -14,12 +15,12 @@ const MainPage = ({google}) => {
     return (
         <div className={css.main}>
             <Header user={user} />
-            <div className={css.leftSideBar}>SideBar</div>
+            <LeftSideBar/>
             <Map
                 google={google}
                 zoom={8}
                 className={css.mapStyles}
-                initialCenter={{ lat: 47.444, lng: -122.176}}
+                initialCenter={{ lat: 50.4021702, lng: 30.3926086}}
             />
         </div>
     );
