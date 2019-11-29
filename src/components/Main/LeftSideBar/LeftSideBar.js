@@ -4,8 +4,6 @@ import css from "./LeftSideBar.less";
 
 const LeftSideBar = () => {
 
-    console.log(sideBarMenu);
-
     return (
         <ul className={css.leftSideBar}>
             {
